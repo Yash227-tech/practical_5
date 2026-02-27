@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checkout - HotWheels">
+    <title>Checkout - HotWheels</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏎️</span>
+                Hot<span>Wheels</span>
+            </a>
+<ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="collection.html" class="nav-link">Collection</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+<div class="nav-actions">
+                <a href="cart.html" class="nav-cart">
+                    <span class="nav-cart-icon">🛒</span>
+                    <span class="cart-badge">0</span>
+                </a>
+                <a href="login.html" class="nav-user">👤 Login</a>
+            </div>
+        </div>
+    </nav>
+<main class="section">
+        <div class="container checkout-container">
+            <div>
+<div class="checkout-form-section" id="customer-info">
+                    <h3>👤 Customer Information</h3>
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(0, 217, 255, 0.1); border-radius: var(--radius-md); border: 1px solid rgba(0, 217, 255, 0.2);">
+                        <div style="font-size: 2rem;">✓</div>
+                        <div>
+                            <div style="font-weight: 600;" id="customer-name">Loading...</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;" id="customer-email">Loading...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<div class="checkout-form-section">
+                    <h3>📦 Shipping Address</h3>
+                    <form id="checkout-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="first-name">First Name</label>
+                                <input type="text" id="first-name" class="form-input" placeholder="John" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="last-name">Last Name</label>
+                                <input type="text" id="last-name" class="form-input" placeholder="Doe" required>
+                            </div>
+                        </div>
+<div class="form-group" style="margin-top: 1rem;">
+                            <label class="form-label" for="address">Street Address</label>
+                            <input type="text" id="address" class="form-input" placeholder="123 Main Street" required>
+                        </div>
+<div class="form-row" style="margin-top: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="city">City</label>
+                                <input type="text" id="city" class="form-input" placeholder="New York" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="zip">ZIP Code</label>
+                                <input type="text" id="zip" class="form-input" placeholder="10001" required>
+                            </div>
+                        </div>
+<div class="form-group" style="margin-top: 1rem;">
+                            <label class="form-label" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 123-4567" required>
+                        </div>
+                    </form>
+                </div>
+<div class="checkout-form-section">
+                    <h3>💳 Payment Method</h3>
+                    <div style="display: grid; gap: 1rem;">
+                        <label
+                            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); cursor: pointer; border: 2px solid var(--color-primary);">
+                            <input type="radio" name="payment" value="card" checked style="width: 20px; height: 20px;">
+                            <span style="font-size: 1.5rem;">💳</span>
+                            <span>Credit / Debit Card</span>
+                        </label>
+                        <label
+                            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); cursor: pointer; border: 2px solid transparent;">
+                            <input type="radio" name="payment" value="paypal" style="width: 20px; height: 20px;">
+                            <span style="font-size: 1.5rem;">🅿️</span>
+                            <span>PayPal</span>
+                        </label>
+                        <label
+                            style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); cursor: pointer; border: 2px solid transparent;">
+                            <input type="radio" name="payment" value="cod" style="width: 20px; height: 20px;">
+                            <span style="font-size: 1.5rem;">💵</span>
+                            <span>Cash on Delivery</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+<div class="order-summary">
+                <h3>Order Summary</h3>
+<div id="checkout-items" style="margin-bottom: 1.5rem; max-height: 300px; overflow-y: auto;">
+</div>
+<div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summary-subtotal">$0.00</span>
+                    </div>
+<div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="summary-shipping">$0.00</span>
+                    </div>
+<div class="summary-row">
+                        <span>Tax (8%)</span>
+                        <span id="summary-tax">$0.00</span>
+                    </div>
+<div class="summary-row total">
+                        <span>Total</span>
+                        <span id="summary-total">$0.00</span>
+                    </div>
+                </div>
+<button class="btn btn-accent btn-lg" style="width: 100%; margin-top: 1.5rem;" onclick="placeOrder()">
+                    🎉 Place Order
+                </button>
+<p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                    🔒 Your payment information is secure
+                </p>
+            </div>
+        </div>
+    </main>
+<div class="modal-overlay" id="success-modal">
+        <div class="modal" style="text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🎉</div>
+            <h2 style="margin-bottom: 0.5rem;">Order Placed Successfully!</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Thank you for your order. We'll send you a confirmation email shortly.
+            </p>
+            <div
+                style="background: var(--bg-tertiary); padding: 1rem; border-radius: var(--radius-md); margin-bottom: 1.5rem;">
+                <div style="font-size: 0.9rem; color: var(--text-muted);">Order Number</div>
+                <div style="font-size: 1.25rem; font-weight: 700; color: var(--color-primary);" id="order-number">
+                    CT-XXXXXX</div>
+            </div>
+            <a href="index.html" class="btn btn-primary btn-lg" style="width: 100%;">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
+<script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+            if (!isLoggedIn()) {
+                sessionStorage.setItem('redirectAfterLogin', 'checkout.html');
+                window.location.href = 'login.html';
+                return;
+            }
+const user = getCurrentUser();
+            document.getElementById('customer-name').textContent = user.name;
+            document.getElementById('customer-email').textContent = user.email;
+const nameParts = user.name.split(' ');
+            document.getElementById('first-name').value = nameParts[0] || '';
+            document.getElementById('last-name').value = nameParts.slice(1).join(' ') || '';
+loadCheckoutItems();
+        });
+function loadCheckoutItems() {
+            const container = document.getElementById('checkout-items');
+            const cartItems = getCartWithDetails();
+if (cartItems.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+container.innerHTML = cartItems.map(item => `
+                <div style="display: flex; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <img src="${item.product.image}" alt="${item.product.name}" style="width: 50px; height: 50px; object-fit: cover; border-radius: var(--radius-sm);">
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.9rem; font-weight: 500;">${item.product.name}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Qty: ${item.quantity}</div>
+                    </div>
+                    <div style="font-weight: 600; color: var(--color-primary);">
+                        ${formatPrice(item.product.price * item.quantity)}
+                    </div>
+                </div>
+            `).join('');
+const totals = getCartTotal();
+            document.getElementById('summary-subtotal').textContent = formatPrice(totals.subtotal);
+            document.getElementById('summary-shipping').textContent = totals.shipping === 0 ? 'FREE' : formatPrice(totals.shipping);
+            document.getElementById('summary-tax').textContent = formatPrice(totals.tax);
+            document.getElementById('summary-total').textContent = formatPrice(totals.total);
+        }
+function placeOrder() {
+const form = document.getElementById('checkout-form');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+const orderNumber = 'CT-' + Date.now().toString().slice(-6);
+            document.getElementById('order-number').textContent = orderNumber;
+clearCart();
+document.getElementById('success-modal').classList.add('active');
+        }
+document.querySelectorAll('input[name="payment"]').forEach(radio => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('input[name="payment"]').forEach(r => {
+                    r.closest('label').style.borderColor = r.checked ? 'var(--color-primary)' : 'transparent';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

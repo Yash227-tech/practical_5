@@ -1,0 +1,136 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Ferrari SF90 Stradale",
+      "category": "Sports Cars",
+      "price": 4999,
+      "originalPrice": 6999,
+      "image": "images/ferrari-sf90-stradale.png",
+      "badge": "Hot",
+      "description": "Premium die-cast Ferrari with opening doors and detailed interior"
+    },
+    {
+      "id": 2,
+      "name": "Lamborghini Huracán",
+      "category": "Sports Cars",
+      "price": 4499,
+      "originalPrice": null,
+      "image": "images/lamborghini-huracan.png",
+      "badge": null,
+      "description": "Detailed Lamborghini model with authentic styling"
+    },
+    {
+      "id": 3,
+      "name": "Porsche 911 GT3",
+      "category": "Sports Cars",
+      "price": 3999,
+      "originalPrice": 5499,
+      "image": "images/porsche-911-gt3.png",
+      "badge": "Sale",
+      "description": "Classic Porsche design in stunning detail"
+    },
+    {
+      "id": 4,
+      "name": "McLaren P1",
+      "category": "Supercars",
+      "price": 5999,
+      "originalPrice": null,
+      "image": "images/mclaren-p1.png",
+      "badge": "New",
+      "description": "Hypercar perfection in miniature form"
+    },
+    {
+      "id": 5,
+      "name": "Ford Mustang GT",
+      "category": "Muscle Cars",
+      "price": 3499,
+      "originalPrice": 4499,
+      "image": "images/ford-mustang-gt.png",
+      "badge": "Best Seller",
+      "description": "American muscle icon with roaring details"
+    },
+    {
+      "id": 6,
+      "name": "BMW M4 Competition",
+      "category": "Sports Cars",
+      "price": 4299,
+      "originalPrice": null,
+      "image": "images/bmw-m4.png",
+      "badge": null,
+      "description": "German engineering excellence"
+    },
+    {
+      "id": 8,
+      "name": "Aston Martin DB11",
+      "category": "Luxury Cars",
+      "price": 5499,
+      "originalPrice": null,
+      "image": "images/aston-martin-db11.png",
+      "badge": "Premium",
+      "description": "British luxury and sophistication"
+    },
+    {
+      "id": 10,
+      "name": "Bugatti Chiron",
+      "category": "Hypercars",
+      "price": 7999,
+      "originalPrice": 9999,
+      "image": "images/bugatti-chiron.png",
+      "badge": "Limited",
+      "description": "The ultimate hypercar experience"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "email": "test@test.com",
+      "password": "pass123",
+      "createdAt": "2026-02-24T17:15:36.406Z"
+    },
+    {
+      "id": 2,
+      "name": "Yash Kumar",
+      "email": "yash@example.com",
+      "password": "mypass123",
+      "createdAt": "2026-02-24T17:17:42.024Z"
+    }
+  ],
+  "carts": {
+    "1": []
+  },
+  "orders": [
+    {
+      "id": 1,
+      "orderNumber": "HW-489291",
+      "userId": 1,
+      "items": [
+        {
+          "productId": 1,
+          "name": "Ferrari SF90 Stradale",
+          "price": 4999,
+          "quantity": 5,
+          "total": 24995
+        }
+      ],
+      "shippingAddress": {
+        "firstName": "Yash",
+        "lastName": "Kumar",
+        "address": "123 Main St",
+        "city": "Mumbai",
+        "zip": "400001",
+        "phone": "9876543210"
+      },
+      "paymentMethod": "card",
+      "totals": {
+        "subtotal": 24995,
+        "tax": 1999.6000000000001,
+        "shipping": 0,
+        "total": 26994.6
+      },
+      "status": "confirmed",
+      "createdAt": "2026-02-24T17:18:09.291Z"
+    }
+  ]
+}

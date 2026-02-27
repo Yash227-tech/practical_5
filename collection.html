@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Browse our complete collection of premium die-cast car toys. Ferrari, Lamborghini, Porsche and more.">
+    <title>Collection - HotWheels</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-icon">🏎️</span>
+                Hot<span>Wheels</span>
+            </a>
+<ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="collection.html" class="nav-link active">Collection</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+<div class="nav-actions">
+                <a href="cart.html" class="nav-cart">
+                    <span class="nav-cart-icon">🛒</span>
+                    <span class="cart-badge">0</span>
+                </a>
+                <a href="login.html" class="nav-user">👤 Login</a>
+            </div>
+        </div>
+    </nav>
+<section style="padding-top: 120px; padding-bottom: 40px; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 0;">
+                <span class="section-tag">Our Collection</span>
+                <h1 class="section-title">Premium <span class="text-gradient">Car Toys</span></h1>
+                <p class="section-subtitle">
+                    Explore our curated collection of die-cast car models from the world's most iconic brands
+                </p>
+            </div>
+        </div>
+    </section>
+<section style="padding: 20px 0; background: var(--bg-tertiary); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div
+                style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <button class="btn btn-ghost btn-sm filter-btn active" data-filter="all">All</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Sports Cars">Sports Cars</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Supercars">Supercars</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Muscle Cars">Muscle Cars</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Hypercars">Hypercars</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Luxury Cars">Luxury Cars</button>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                    <span id="product-count">12</span> products
+                </div>
+            </div>
+        </div>
+    </section>
+<section class="section">
+        <div class="container">
+            <div class="products-grid" id="products-grid">
+</div>
+        </div>
+    </section>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-grid" style="grid-template-columns: 2fr 1fr;">
+                <div class="footer-brand">
+                    <div class="footer-logo">🏎️ Hot<span>Wheels</span></div>
+                    <p class="footer-desc">
+                        The world's premier destination for die-cast car collectors. Quality models, exceptional
+                        service.
+                    </p>
+                </div>
+<div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="collection.html" class="footer-link">All Products</a></li>
+                        <li><a href="collection.html?filter=Sports Cars" class="footer-link">Sports Cars</a></li>
+                        <li><a href="collection.html?filter=Supercars" class="footer-link">Supercars</a></li>
+                        <li><a href="index.html#about" class="footer-link">About Us</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+<div class="footer-bottom">
+                <p>© 2026 HotWheels. All rights reserved.</p>
+                <p>Made with ❤️ for car enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+<div class="modal-overlay" id="quantity-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Add to Cart</h3>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+<div class="modal-product">
+                <div class="modal-product-image">
+                    <img id="modal-product-img" src="" alt="Product">
+                </div>
+                <div class="modal-product-info">
+                    <h4 class="modal-product-name" id="modal-product-name"></h4>
+                    <div class="modal-product-price" id="modal-product-price"></div>
+                </div>
+            </div>
+<div class="quantity-selector">
+                <button class="quantity-btn" onclick="decrementQuantity()">−</button>
+                <span class="quantity-value" id="quantity-value">1</span>
+                <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+            </div>
+<div class="modal-total">
+                <span class="modal-total-label">Total:</span>
+                <span class="modal-total-value" id="modal-total"></span>
+            </div>
+<button class="btn btn-primary btn-lg" style="width: 100%;" onclick="confirmAddToCart()">
+                🛒 Add to Cart
+            </button>
+        </div>
+    </div>
+<script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+let currentProduct = null;
+        let currentQuantity = 1;
+        let currentFilter = 'all';
+function loadProducts(filter = 'all') {
+            const container = document.getElementById('products-grid');
+            let filteredProducts = products;
+if (filter !== 'all') {
+                filteredProducts = products.filter(p => p.category === filter);
+            }
+document.getElementById('product-count').textContent = filteredProducts.length;
+if (filteredProducts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1 / -1;">
+                        <div class="empty-icon">🔍</div>
+                        <h3 class="empty-title">No products found</h3>
+                        <p class="empty-text">Try a different category</p>
+                    </div>
+                `;
+                return;
+            }
+container.innerHTML = filteredProducts.map(product => `
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-price-row">
+                            <div>
+                                <span class="product-price">${formatPrice(product.price)}</span>
+                                ${product.originalPrice ? `<span class="product-price-old">${formatPrice(product.originalPrice)}</span>` : ''}
+                            </div>
+                            <button class="product-add-btn" onclick="openModal(${product.id})" title="Add to Cart">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                loadProducts(currentFilter);
+            });
+        });
+function openModal(productId) {
+            currentProduct = getProductById(productId);
+            currentQuantity = 1;
+if (!currentProduct) return;
+document.getElementById('modal-product-img').src = currentProduct.image;
+            document.getElementById('modal-product-name').textContent = currentProduct.name;
+            document.getElementById('modal-product-price').textContent = formatPrice(currentProduct.price);
+            document.getElementById('quantity-value').textContent = currentQuantity;
+            updateModalTotal();
+document.getElementById('quantity-modal').classList.add('active');
+        }
+function closeModal() {
+            document.getElementById('quantity-modal').classList.remove('active');
+            currentProduct = null;
+            currentQuantity = 1;
+        }
+function incrementQuantity() {
+            currentQuantity++;
+            document.getElementById('quantity-value').textContent = currentQuantity;
+            updateModalTotal();
+        }
+function decrementQuantity() {
+            if (currentQuantity > 1) {
+                currentQuantity--;
+                document.getElementById('quantity-value').textContent = currentQuantity;
+                updateModalTotal();
+            }
+        }
+function updateModalTotal() {
+            if (currentProduct) {
+                const total = currentProduct.price * currentQuantity;
+                document.getElementById('modal-total').textContent = formatPrice(total);
+            }
+        }
+function confirmAddToCart() {
+            if (currentProduct) {
+                addToCart(currentProduct.id, currentQuantity);
+                closeModal();
+showNotification(`Added ${currentQuantity} × ${currentProduct.name} to cart!`);
+            }
+        }
+function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'alert alert-success';
+            notification.style.cssText = 'position: fixed; bottom: 20px; right: 20px; z-index: 3000; animation: fadeInUp 0.3s ease;';
+            notification.innerHTML = `✓ ${message}`;
+            document.body.appendChild(notification);
+setTimeout(() => {
+                notification.style.animation = 'fadeInUp 0.3s ease reverse';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+document.getElementById('quantity-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'quantity-modal') {
+                closeModal();
+            }
+        });
+document.addEventListener('DOMContentLoaded', () => {
+const urlParams = new URLSearchParams(window.location.search);
+            const filterParam = urlParams.get('filter');
+if (filterParam) {
+                currentFilter = filterParam;
+document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.filter === filterParam) {
+                        btn.classList.add('active');
+                    }
+                });
+                loadProducts(filterParam);
+            } else {
+                loadProducts();
+            }
+        });
+    </script>
+</body>
+</html>
